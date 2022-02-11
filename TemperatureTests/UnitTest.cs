@@ -9,7 +9,7 @@ public class UnitTest
     public void Given0CelciusOutput32Fahrenheit()
     {
         Conversion conversion = new Conversion();
-        double expected = 32;
+        double expected = 320;
         double actual = conversion.Convert(Conversion.ConversionMode.Celsius_to_Fahrenheit, 0);
         Assert.Equal(expected, actual);
     }
@@ -59,7 +59,7 @@ public class UnitTest
         Assert.Equal(expected, actual);
     }
 
-    
+
     [Fact]
     public void Given0CelciusOutput273Kelvin()
     {
@@ -76,8 +76,8 @@ public class UnitTest
         double expected = 373;
         double actual = conversion.Convert(Conversion.ConversionMode.Celsius_to_Kelvin, 100);
         Assert.Equal(expected, actual);
-    }    
-    
+    }
+
     [Fact]
     public void Given0KelvinOutput273Celcius()
     {
