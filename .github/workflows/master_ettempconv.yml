@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - ettempconv
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -25,8 +25,17 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
